@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Multi-Room Chat Application</title>
+		<link rel="stylesheet" href="themes/chatapp.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile.structure-1.3.0-rc.1.min.css" />
+		<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.3.0-rc.1/jquery.mobile-1.3.0-rc.1.min.js"></script>
+
+		<!--<link href="/styles/animate.css" rel="stylesheet" type="text/css" />-->
+		<link href="/styles/mobileStyle.css" rel="stylesheet" type="text/css" />
+		<link href="/styles/avgrund.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div data-role="page" data-theme="a">
+			<div data-role="header" data-position="inline">
+				<h1>Multi-Room Chat Application</h1>
+			</div>
+			<div data-role="content" data-theme="a">
+				<div class="pr center wrapper">
+					<div class="cf pr chat animate">
+						<div class="pa chat-shadow">
+							<div class="content animate bounceInDown">Click <div class="big-button-green start">Start</div> to begin...</div>
+						</div>
+						<div class="cf chat-top">
+							<div class="fl chat-left">
+								<div class="chat-messages">
+									<ul data-role="listview"></ul>
+									<div class="cTyping"></div>
+								</div>
+							</div>
+							<!--<div class="fl chat-right">
+								<div class="chat-clients">
+									<div class="cf title">
+										<div class="fl">Users</div>
+									</div>
+									<ul></ul>
+								</div>
+								<div class="chat-rooms">
+									<div class="cf title">
+										<div class="fl">Rooms</div>
+										<div class="fr title-button">+</div>
+									</div>
+									<ul class="pr"></ul>
+								</div>
+							</div>-->
+						</div>
+					</div>
+				</div>
+				<aside id="nickname-popup" class="popup animate avgrund-popup">
+					<div class="title">Enter a nickname</div>
+					<div class="content">Please select a nickname, up to 15 characters</div>
+					<div class="input"><input type="text" maxlength="15" placeholder="nickname..." /></div>
+					<div class="big-button-green small begin">&mdash; Begin &mdash;</div>
+				</aside>
+				<aside id="addroom-popup" class="popup animate avgrund-popup">
+					<div class="title">Enter a room name</div>
+					<div class="content">Room name up to 10 characters</div>
+					<div class="input"><input type="text" maxlength="10" placeholder="room name..." /></div>
+					<div class="big-button-green small create">Create &rarr;</div>
+				</aside>
+				<div class="avgrund-cover"></div>
+			</div>
+								<div data-role="footer" data-position="fixed" class="cf chat-bottom">
+							<div class="chat-input">
+								<input type="text" placeholder="compose message..." />
+							</div>
+							<div class="chat-submit">
+								<button>Send &rarr;</button>
+							</div>
+						</div>
+		</div>
+		<script type="text/javascript" src="/scripts/jquery.tmpl.min.js"></script>
+		<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+		<script type="text/javascript" src="/scripts/avgrund.js"></script>
+		<script type="text/javascript" src="/scripts/chat.io.js"></script>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		<script type="text/javascript">
+		  (function() {
+		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+		    po.src = 'https://apis.google.com/js/plusone.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+		</script>
+		<script type="text/javascript">
+		$('h1 sup').on('click', function () {
+			if($('.chat').hasClass('bounceOutRight')){
+				$('.chat').removeClass('bounceOutRight');
+				$('.chat').addClass('bounceInLeft');
+				
+				$('.info').removeClass('bounceInLeft');
+				$('.info').addClass('bounceOutRight');
+				
+				window.setTimeout(function(){
+					$('.chat').removeClass('bounceInLeft');
+				}, 1500);
+			} else {
+				$('.chat').removeClass('bounceInLeft');
+				$('.chat').addClass('bounceOutRight');
+				
+				$('.info').removeClass('bounceOutRight');
+				$('.info').addClass('bounceInLeft');
+			}
+			
+		});
+		</script>
+	</body>
+</html>
